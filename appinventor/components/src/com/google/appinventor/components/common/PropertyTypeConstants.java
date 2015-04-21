@@ -179,4 +179,9 @@ public class PropertyTypeConstants {
    */
   public static final String PROPERTY_TYPE_TEXT_RECEIVING = "text_receiving";
 
+    /**
+     *  Choices of ListView List item template. {@link
+     *  com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidListViewListItemTemplateChoicePropertyEditor}.
+     */
+    public static final String PROPERTY_TYPE_LISTITEM_TEMPLATE =  "listitem_template";
 }

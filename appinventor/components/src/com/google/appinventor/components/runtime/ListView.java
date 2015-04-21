@@ -76,6 +76,8 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
   private int textSize;
   private static final int DEFAULT_TEXT_SIZE = 22;
 
+    //template number of list item.
+    private int template;
   /**
    * Creates a new ListView component.
    * @param container  container that the component will be placed in
@@ -83,6 +85,7 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
   public ListView(ComponentContainer container) {
     super(container);
     this.container = container;
+      this.template = 0;
     items = YailList.makeEmptyList();
     view = new android.widget.ListView(container.$context());
     view.setOnItemClickListener(this);
@@ -445,5 +448,23 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
         textSize = fontSize;
       setAdapterData();
   }
+    /**
+     * Choose the template of listItem
+     */
+    @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_LISTITEM_TEMPLATE,
+        defaultValue = "0")
+    @SimpleProperty(description = "Choose the template of list item", userVisible=false)
+    public void ListItemTemplate(int template){
+        this.template = template;
+
+    }
+
+    @SimpleProperty(
+            category = PropertyCategory.APPEARANCE,
+            userVisible = false)
+    public int ListItemTemplate(){
+        return template;
+    }
+
 
 }

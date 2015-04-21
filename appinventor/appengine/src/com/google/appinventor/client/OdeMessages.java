@@ -2731,6 +2731,18 @@ public interface OdeMessages extends Messages {
   @Description("")
   String ShowFilterBarProperties();
 
+  @DefaultMessage("TextTemplate")
+  @Description("This is the Text template choice string for listView list item's template")
+  String ListViewTextTemplate();
+
+  @DefaultMessage("ImageTemplate")
+  @Description("This is the Image template choice string for listView list item's template")
+  String ListViewImageTemplate();
+
+  @DefaultMessage("ImageLabelTemplate")
+  @Description("This is the ImageLabel tempalte choice string for listView list item's template")
+  String ListViewImageLabelTemplate();
+
   @DefaultMessage("TextSize")
   @Description("")
   String TextSizeProperties();
