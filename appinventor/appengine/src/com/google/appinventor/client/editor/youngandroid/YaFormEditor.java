@@ -291,6 +291,8 @@ public final class YaFormEditor extends SimpleEditor implements FormChangeListen
       if (component.isPropertyPersisted(propertyName)) {
         Ode.getInstance().getEditorManager().scheduleAutoSave(this);
         updatePhone();          // Push changes to the phone if it is connected
+        OdeLog.log(component.getName() + " property change event");
+        updatePropertiesPanel(component);//for dynamically add or remove components
       }
     } else {
       OdeLog.elog("onComponentPropertyChanged called when loadComplete is false");
@@ -476,7 +478,7 @@ public final class YaFormEditor extends SimpleEditor implements FormChangeListen
     YaProjectEditor yaProjectEditor = (YaProjectEditor) projectEditor;
     YaBlocksEditor blockEditor = yaProjectEditor.getBlocksFileEditor(formNode.getFormName());
     blockEditor.addComponent(mockComponent.getType(), mockComponent.getName(),
-        mockComponent.getUuid());
+            mockComponent.getUuid());
 
     // Add nested components
     if (properties.containsKey("$Components")) {
@@ -528,6 +530,8 @@ public final class YaFormEditor extends SimpleEditor implements FormChangeListen
    * Show the given component's properties in the properties panel.
    */
   private void updatePropertiesPanel(MockComponent component) {
+    OdeLog.log(component.getName() + "properties get updated!!!!!!!!!!!" + component.getProperties().toString());
+
     designProperties.setProperties(component.getProperties());
     // need to update the caption after the setProperties call, since
     // setProperties clears the caption!

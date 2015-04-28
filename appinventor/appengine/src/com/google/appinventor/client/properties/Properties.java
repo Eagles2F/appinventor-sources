@@ -145,6 +145,12 @@ public class Properties<T extends Property> implements Iterable<T> {
     }
   }
 
+  public void deleteProperty(String name){
+    if(this.propertiesMap.containsKey(name)) {
+      this.propertiesMap.remove(name);
+      OdeLog.log("Delete" + name + "Successful!");
+    }
+  }
   /**
    * Deletes all properties.
    */

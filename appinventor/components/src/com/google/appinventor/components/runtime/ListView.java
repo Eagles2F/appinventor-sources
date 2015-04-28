@@ -182,8 +182,8 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
    *
    * @param showFilter set the visibility according to this input
    */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN,
-      defaultValue = DEFAULT_ENABLED ? "True" : "False")
+//  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN,
+//      defaultValue = DEFAULT_ENABLED ? "True" : "False")
   @SimpleProperty(description = "Sets visibility of ShowFilterBar. True will show the bar, " +
       "False will hide it.")
   public void ShowFilterBar(boolean showFilter) {
@@ -232,7 +232,7 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
    * Specifies the text elements of the ListView.
    * @param itemstring a string containing a comma-separated list of the strings to be picked from
    */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING, defaultValue = "")
+//  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING, defaultValue = "")
   @SimpleProperty(description="The TextView elements specified as a string with the " +
       "items separated by commas " +
       "such as: Cheese,Fruit,Bacon,Radish. Each word before the comma will be an element in the " +
@@ -316,8 +316,8 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
   /**
    * Selection property setter method.
    */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
-      defaultValue = "")
+//  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
+//      defaultValue = "")
   @SimpleProperty
   public void Selection(String value) {
     selection = value;
@@ -413,8 +413,8 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
    * @param argb background color in the format 0xAARRGGBB, which
    * includes alpha, red, green, and blue components
    */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_COLOR,
-      defaultValue = Component.DEFAULT_VALUE_COLOR_WHITE)
+//  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_COLOR,
+//      defaultValue = Component.DEFAULT_VALUE_COLOR_WHITE)
   @SimpleProperty
   public void TextColor(int argb) {
       textColor = argb;
@@ -438,8 +438,8 @@ public final class ListView extends AndroidViewComponent implements AdapterView.
    *
    * @param integer value for font size
    */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_NON_NEGATIVE_INTEGER,
-      defaultValue = DEFAULT_TEXT_SIZE + "")
+//  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_NON_NEGATIVE_INTEGER,
+//      defaultValue = DEFAULT_TEXT_SIZE + "")
   @SimpleProperty
   public void TextSize(int fontSize) {
       if(fontSize>1000)

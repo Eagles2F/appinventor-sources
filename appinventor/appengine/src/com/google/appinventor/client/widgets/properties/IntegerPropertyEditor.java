@@ -6,6 +6,8 @@
 
 package com.google.appinventor.client.widgets.properties;
 
+import com.google.appinventor.client.output.OdeLog;
+
 import static com.google.appinventor.client.Ode.MESSAGES;
 
 /**
@@ -32,6 +34,7 @@ public class IntegerPropertyEditor extends TextPropertyEditor {
 
   @Override
   protected void validate(String text) throws InvalidTextException {
+    OdeLog.log("Textsize:"+text);
     super.validate(text);
 
     // Make sure it's an integer.

@@ -9,13 +9,16 @@ package com.google.appinventor.client.editor.simple.components;
 import static com.google.appinventor.client.Ode.MESSAGES;
 
 import com.google.appinventor.client.editor.simple.SimpleEditor;
+import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidBooleanPropertyEditor;
+import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidColorChoicePropertyEditor;
 import com.google.appinventor.client.output.OdeLog;
+import com.google.appinventor.client.widgets.properties.NonNegativeIntegerPropertyEditor;
 import com.google.appinventor.components.common.ComponentConstants;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.InlineLabel;
-
+import com.google.appinventor.client.widgets.properties.StringPropertyEditor;
 /**
  * Mock ListView component.
  *
@@ -36,6 +39,7 @@ public final class MockListView extends MockVisibleComponent {
 
   private static final String DEFAULT_BACKGROUND_COLOR = "&HFF000000";
 
+    private static final String color_template1 = "&HFF00FF00";
   private static final String DEFAULT_TEXT_COLOR = "&HFFFFFFFF";
 
   //  Needed for background color of labelInItem
@@ -152,11 +156,35 @@ public final class MockListView extends MockVisibleComponent {
   // PropertyChangeListener implementation
   @Override
   public void onPropertyChange(String propertyName, String newValue) {
+      OdeLog.log("Changing:" + propertyName +":" +newValue);
+
     super.onPropertyChange(propertyName, newValue);
+      if(!hasProperty(propertyName)){
+      /* if the property doesn't exist, return the function call.This is a ugly workaround only for listview.
+      *  Because we are dynamically changing the properties.
+      */
+          return;
+      }
     // Apply changed properties to the mock component
     if (propertyName.equals(PROPERTY_NAME_LISTVIEW)) {
       setElementsFromStringProperty(newValue);
       refreshForm();
+    } else if(propertyName.equals("ListItemTemplate")){
+        if(newValue =="0") {
+            if (!hasProperty("ElementsFromString")) {
+                addProperty("ElementsFromString", "", "Elements from String", new StringPropertyEditor());
+                addProperty("ShowFilterBar", "False", "Show Filter Bar", new YoungAndroidBooleanPropertyEditor());
+                addProperty("Selection", "", "Selection", new StringPropertyEditor());
+                addProperty("TextColor", "&HFFFFFFFF", "TextColor", new YoungAndroidColorChoicePropertyEditor());
+                addProperty("TextSize", 22 + "", "TextSize", new NonNegativeIntegerPropertyEditor());
+            }
+        } else if(newValue == "1"){
+            deleteProperty("ElementsFromString");
+            deleteProperty("ShowFilterBar");
+            deleteProperty("Selection");
+            deleteProperty("TextColor");
+            deleteProperty("TextSize");
+        }
     } else if (propertyName.equals(PROPERTY_NAME_SHOW_FILTER_BAR)) {
       setFilterShowBox(newValue);
       refreshForm();

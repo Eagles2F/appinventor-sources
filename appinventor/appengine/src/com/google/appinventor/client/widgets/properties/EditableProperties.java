@@ -6,6 +6,7 @@
 
 package com.google.appinventor.client.widgets.properties;
 
+import com.google.appinventor.client.output.OdeLog;
 import com.google.appinventor.client.properties.Properties;
 
 import java.util.ArrayList;
@@ -63,6 +64,13 @@ public class EditableProperties extends Properties<EditableProperty> {
     }
   }
 
+  public void deleteProperty(String name){
+    super.deleteProperty(name);
+
+    if (changeEventOnAdd) {
+      firePropertyChangeEvent(name, "");
+    }
+  }
   /**
    * Adds a {@link PropertyChangeListener} to the listener list.
    *
@@ -102,6 +110,7 @@ public class EditableProperties extends Properties<EditableProperty> {
     for (EditableProperty property : this) {
       if (property.isVisible()) {
         panel.addProperty(property);
+        OdeLog.log("add property:" + property.getName()+ "value:" + property.getValue());
       }
     }
   }
